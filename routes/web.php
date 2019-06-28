@@ -15,8 +15,12 @@ Route::get('/', 'AdminsController@login');
 
 Route::get('/register', 'AdminsController@register');
 
-Route::post('/register-new', 'AdminController@registerNew');
+Route::post('/register-new', 'AdminsController@registerNew');
 
-Route::post('/login-check', 'AdminController@loginCheck');
+Route::post('/login-check', 'AdminsController@loginCheck');
 
-Route::get('/logout', 'AdminController@logout');
+Route::get('/logout', 'AdminsController@logout');
+
+Route::get('/home', function() {
+    return view('home');
+})
