@@ -41,9 +41,8 @@ class AdminsController extends Controller
                         where('password', md5( $request->password ) )->first();
 
         if( $admin ) {
-            return redirect('/')
-            ->with("success", "Admin found")
-            ->withInput();
+            $request->session()->put('username', $request->username);
+            return redirect('/home');
         }else {
             return redirect('/')
                 ->withError("Admin not found. Try again")
@@ -52,6 +51,7 @@ class AdminsController extends Controller
     }
 
     public function logout(Request $request) {
-
+        $request->session()->flush();
+        return view('login');
     }
 }

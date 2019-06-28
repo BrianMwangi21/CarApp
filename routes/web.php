@@ -21,6 +21,10 @@ Route::post('/login-check', 'AdminsController@loginCheck');
 
 Route::get('/logout', 'AdminsController@logout');
 
-Route::get('/home', function() {
-    return view('home');
-})
+Route::get('/home', 'CarsController@getAll');
+
+Route::get('/new-car', function() {
+    return view('new-car');
+});
+
+Route::post('/new-car-create', 'CarsController@newCar');
